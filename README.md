@@ -53,7 +53,10 @@ datasource db {
 model User {
   id String  @id @default(cuid())
   name String
+// ...
 }
+
+// ...
 ```
 
 Ejecutamos
