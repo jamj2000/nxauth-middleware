@@ -17,7 +17,7 @@ async function Header() {
                 <Link href="/dashboard">Dashboard</Link>
             </div>
             <nav>
-                {session
+               { session
                     ? <form><button formAction={logout}>SignOut</button></form>
                     :
                     (<>
