@@ -6,15 +6,15 @@ function OAuthForm({error}) {
     <>
       <form className='oauth'>
         <button formAction={loginGoogle} className="social-button">
-          <img src="/google.svg" alt="Google" />  Iniciar sesión con Google
+          <img src="/images/google.svg" alt="Google" />  Iniciar sesión con Google
         </button>
         
         <button formAction={loginGithub} className="social-button">
-          <img src="/github.svg" alt="Github" /> Iniciar sesión con Github
+          <img src="/images/github.svg" alt="Github" /> Iniciar sesión con Github
         </button>
 
         <button formAction={loginDiscord} className="social-button">
-          <img src="/discord.svg" alt="Discord" /> Iniciar sesión con Discord
+          <img src="/images/discord.svg" alt="Discord" /> Iniciar sesión con Discord
         </button>
         { error }
       </form>

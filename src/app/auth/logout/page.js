@@ -11,7 +11,7 @@ async function page() {
         <h1>Cerrar sesión</h1>
         <form>
           <button formAction={logout} className="logout">
-            <img src="/logout.svg" alt="Exit" /> Cerrar sesión
+            <img src="/images/logout.svg" alt="Exit" /> Cerrar sesión
           </button>
         </form>
       </>
