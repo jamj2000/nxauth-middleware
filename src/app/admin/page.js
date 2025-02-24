@@ -9,7 +9,7 @@ async function page() {
 
   return (
     <>
-      <h1> 🔐  Admin panel</h1>
+      <h1 className="text-3xl font-bold"> 🔐  Admin panel</h1>
       <p> {sesion?.user.name}</p>
       <p> {sesion?.user.email} </p>
       <p> {sesion?.user.role} </p>

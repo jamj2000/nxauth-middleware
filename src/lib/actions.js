@@ -6,7 +6,7 @@ import { getUserByEmail } from '@/lib/data';
 
 
 // REGISTER
-export async function register(formData) {
+export async function register(prevState, formData) {
     const name = formData.get('name')
     const email = formData.get('email')
     const password = formData.get('password')
@@ -15,7 +15,10 @@ export async function register(formData) {
     const user = await getUserByEmail(email);
 
     if (user) {
-        return { error: 'El email ya está registrado' }
+        return {
+            error: 'El email ya está registrado',
+            fields: Object.fromEntries(formData.entries())
+        }
     }
 
     // Encriptamos password 
@@ -36,8 +39,7 @@ export async function register(formData) {
 
 
 // LOGIN credentials
-export async function login(formData) {
-    const callbackUrl = formData.get('callbackUrl')
+export async function login(prevState, formData) {
     const email = formData.get('email')
     const password = formData.get('password')
 
@@ -45,7 +47,10 @@ export async function login(formData) {
     const user = await getUserByEmail(email);
 
     if (!user) {
-        return { error: 'Usuario no registrado.' }
+        return {
+            error: 'Usuario no registrado.',
+            fields: Object.fromEntries(formData.entries())
+        }
     }
 
     // Comparamos password 
@@ -55,13 +60,14 @@ export async function login(formData) {
         await signIn('credentials',
             {
                 email, password,
-                redirectTo: callbackUrl
-                // redirectTo: globalThis.callbackUrl 
-                // redirectTo: user.role == 'ADMIN' ? '/admin' : '/dashboard'
+                redirectTo: globalThis.callbackUrl
             })
         return { success: "Inicio de sesión correcto" }
     } else {
-        return { error: 'Credenciales incorrectas.' }
+        return {
+            error: 'Credenciales incorrectas.',
+            fields: Object.fromEntries(formData.entries())
+        }
     }
 
 }

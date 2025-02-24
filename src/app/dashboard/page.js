@@ -5,7 +5,7 @@ async function page() {
 
     return (
         <>
-            <h1> 🔑  Dashboard</h1 >
+            <h1 className="text-3xl font-bold"> 🔑  Dashboard</h1 >
             <p> {sesion?.user.name}</p>
             <p> {sesion?.user.email} </p>
             <p> {sesion?.user.role} </p>

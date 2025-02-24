@@ -12,6 +12,12 @@ export default async function Home() {
         <Link href="/dashboard" className="text-blue-700">
           Dashboard del usuario
         </Link>
+        <Link href="/productos" className="text-blue-700">
+          Productos
+        </Link>
+        <Link href="/proveedores" className="text-blue-700">
+          Proveedores
+        </Link>
         <Link href="/about" className="text-blue-700">
           About
         </Link>

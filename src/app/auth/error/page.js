@@ -13,8 +13,8 @@ async function page(props) {
 
   return (
     <>
-        <h1>Error</h1>
-        { error && <h3>{errors.get(error)}</h3> }
+      <h1 className="text-3xl font-bold">Error</h1>
+      {error && <h3>{errors.get(error)}</h3>}
     </>
 
   )

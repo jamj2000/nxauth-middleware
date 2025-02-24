@@ -1,25 +1,18 @@
 import { logout } from "@/lib/actions"
-import { redirect } from "next/navigation"
-import { auth } from "@/auth"
+import { LogOut } from "lucide-react"
 
-async function page() {
-  const sesion = await auth()
 
-  if (sesion) {
-    return (
-      <>
-        <h1>Cerrar sesión</h1>
-        <form>
-          <button formAction={logout} className="logout">
-            <img src="/images/logout.svg" alt="Exit" /> Cerrar sesión
-          </button>
-        </form>
-      </>
-    )
-  }
-  else {
-    redirect('/auth/login')
-  }
+function PaginaLogout() {
+  return (
+    <>
+      <h1 className="text-3xl font-bold">Cerrar sesión</h1>
+      <form action={logout}>
+        <button  className="flex gap-2 px-4 py-2 bg-blue-300">
+          <LogOut /> Cerrar sesión
+        </button>
+      </form>
+    </>
+  )
 }
 
-export default page
+export default PaginaLogout

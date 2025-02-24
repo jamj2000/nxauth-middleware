@@ -1,5 +1,9 @@
-import LoginForm from '@/components/login-form'
-import OAuthForm from '@/components/oauth-form'
+import { auth } from '@/auth';
+import { OauthForm } from '@/components/auth/oauth-form'
+import { LoginForm } from '@/components/auth/login-form'
+import { RegisterForm } from '@/components/auth/register-form';
+import { redirect } from 'next/navigation';
+import { CirclePlus, Play, Globe } from 'lucide-react';
 
 // https://next-auth.js.org/configuration/pages#sign-in-page
 const errors = new Map();
@@ -15,23 +19,64 @@ errors.set('SessionRequired', "Error al iniciar sesión. Verifique que los detal
 errors.set('Default', "No se puede iniciar sesión.");
 
 
-async function page(props) {
-  const searchParams = await props.searchParams;
-  const { error, callbackUrl } = searchParams
-  // Usamos globalThis para almacenar variable global
-  // La usaremos en los actions de login
-  // globalThis.callbackUrl = decodeURIComponent(callbackUrl ?? '%2Fdashboard')
+async function PaginaLogin({ searchParams }) {
+  const { error, callbackUrl } = await searchParams
+  globalThis.callbackUrl = callbackUrl
+
+  const sesion = await auth()
+
+  if (sesion) redirect('/dashboard')
 
   return (
-    <>
-      {error && <h3>{errors.get(error)}</h3>}
-      <div className="form">
-        <h1>Iniciar sesión</h1>
-        <LoginForm error={error} />
-        <OAuthForm error={error} />
-      </div>
-    </>
+    <div className="mt-4 border-2 border-slate-400 rounded-md mx-auto w-fit p-8 flex flex-col gap-2">
+      {/* En Tailwind, la clase peer funciona sólo entre hermanos (siblings) */}
+      {/* https://tailwindcss.com/docs/hover-focus-and-other-states#differentiating-peers */}
+
+      <input
+        id="signup"
+        type="radio" name="sign"
+        className="hidden peer/register"
+      />
+      <label
+        htmlFor="signup"
+        title="Registro"
+        className='self-end text-slate-300 peer-checked/register:text-black'>
+        <CirclePlus />
+      </label>
+
+      <input
+        id="signin"
+        title="Iniciar sesión"
+        type="radio" name="sign"
+        className="hidden peer/login"
+        defaultChecked={true} />
+      <label
+        htmlFor="signin"
+        title="Iniciar sesión"
+        className='self-end text-slate-300 peer-checked/login:text-black'>
+        <Play />
+      </label>
+
+      <input
+        id="signoauth"
+        title="Iniciar sesión OAuth"
+        type="radio" name="sign"
+        className="hidden peer/oauth"
+      />
+      <label
+        htmlFor="signoauth"
+        title="Iniciar sesión con OAuth"
+        className='self-end text-slate-300 peer-checked/oauth:text-black'>
+        <Globe />
+      </label>
+
+
+      <RegisterForm className="hidden peer-checked/register:block" />
+      <LoginForm className="hidden peer-checked/login:block" />
+      <OauthForm className="hidden peer-checked/oauth:block" />
+      {error && <p>{errors.get(error)}</p>}
+    </div>
   )
 }
 
-export default page
+export default PaginaLogin
