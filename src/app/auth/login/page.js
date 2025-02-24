@@ -15,11 +15,12 @@ errors.set('SessionRequired', "Error al iniciar sesión. Verifique que los detal
 errors.set('Default', "No se puede iniciar sesión.");
 
 
-function page({ searchParams }) {
+async function page(props) {
+  const searchParams = await props.searchParams;
   const { error, callbackUrl } = searchParams
   // Usamos globalThis para almacenar variable global
   // La usaremos en los actions de login
-  globalThis.callbackUrl = decodeURIComponent(callbackUrl ?? '%2Fdashboard')
+  // globalThis.callbackUrl = decodeURIComponent(callbackUrl ?? '%2Fdashboard')
 
   return (
     <>

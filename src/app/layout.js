@@ -14,10 +14,12 @@ export default async function RootLayout({ children }) {
 
 
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header/>
-        {children}
+    <html lang="es">
+      <body className={`bg-slate-100 ${inter.className}`} >
+        <Header />
+        <main className="px-10">
+          {children}
+        </main>
       </body>
     </html>
   )

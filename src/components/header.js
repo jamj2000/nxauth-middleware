@@ -1,32 +1,31 @@
 import Link from 'next/link'
 import { auth } from "@/auth"
 import { logout } from '@/lib/actions'
+import { Home } from 'lucide-react';
 
 async function Header() {
     const session = await auth();
     // console.log(session);
 
     return (
-        <header>
-            <div>
-                <Link href="/">Inicio</Link>
-                {session?.user?.role === 'ADMIN'
-                    ? <Link href="/admin">Admin panel</Link>
-                    : ''
-                }
-                <Link href="/dashboard">Dashboard</Link>
-            </div>
-            <nav>
-               { session
-                    ? <form><button formAction={logout}>SignOut</button></form>
-                    :
-                    (<>
-                        <Link href="/auth/register">SignUp</Link>
-                        <Link href="/auth/login">SignIn</Link>
-                    </>)
-                }
-            </nav>
-        </header>
+        <header className='bg-blue-700 text-white flex px-10 py-2 justify-between'>
+        <nav className='flex gap-4'>
+            <Link href="/">
+                <Home />
+            </Link>
+            {session?.user?.role === 'ADMIN'
+                && <Link href="/admin">Admin panel</Link>
+            }
+            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/about">About</Link>
+        </nav>
+        <div className='flex gap-4'>
+            {session
+                ? <form><button formAction={logout}>Logout</button></form>
+                : <Link href="/auth/login">Login</Link>
+            }
+        </div>
+    </header>
     )
 }
 

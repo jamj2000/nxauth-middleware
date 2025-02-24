@@ -37,6 +37,7 @@ export async function register(formData) {
 
 // LOGIN credentials
 export async function login(formData) {
+    const callbackUrl = formData.get('callbackUrl')
     const email = formData.get('email')
     const password = formData.get('password')
 
@@ -54,7 +55,8 @@ export async function login(formData) {
         await signIn('credentials',
             {
                 email, password,
-                redirectTo: globalThis.callbackUrl 
+                redirectTo: callbackUrl
+                // redirectTo: globalThis.callbackUrl 
                 // redirectTo: user.role == 'ADMIN' ? '/admin' : '/dashboard'
             })
         return { success: "Inicio de sesión correcto" }

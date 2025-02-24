@@ -1,24 +1,29 @@
 {
-  "name": "nxauth5",
+  "name": "nxa",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@auth/prisma-adapter": "^1.5.0",
-    "@prisma/client": "^5.10.2",
-    "bcryptjs": "^2.4.3",
-    "next": "^14.0.4",
-    "next-auth": "^5.0.0-beta.15",
-    "react": "^18",
-    "react-dom": "^18"
+    "@auth/prisma-adapter": "^2.7.4",
+    "@prisma/client": "^6.4.1",
+    "bcryptjs": "^3.0.2",
+    "lucide-react": "^0.475.0",
+    "next": "15.1.7",
+    "next-auth": "^5.0.0-beta.25",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "prisma": "^5.10.2"
+    "@eslint/eslintrc": "^3",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.7",
+    "postcss": "^8",
+    "prisma": "^6.4.1",
+    "tailwindcss": "^3.4.1"
   }
 }

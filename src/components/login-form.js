@@ -2,9 +2,16 @@
 import Button from '@/components/button-form';
 import { useState } from 'react';
 import { login } from '@/lib/actions'
+import { useSearchParams } from 'next/navigation';
 
 
 function LoginForm() {
+    const searchParams = useSearchParams()
+    const callbackUrl = searchParams.get('callbackUrl')
+    // console.log(`callbackUrl ${callbackUrl}`);
+
+    // globalThis.callbackUrl = decodeURIComponent(callbackUrl ?? '%2Fdashboard')
+
     const [resultado, setResultado] = useState("")
     const [tipo, setTipo] = useState("")
 
@@ -21,6 +28,7 @@ function LoginForm() {
     }
     return (
         <form action={wrapper} className='credentials'>
+            <input type="hidden" name="callbackUrl" defaultValue={callbackUrl} />
             <div>
                 <label>Email
                     <input type='email' name='email' placeholder="jose@mail.com" />
