@@ -1,9 +1,9 @@
-import { auth } from '@/auth';
-import { OauthForm } from '@/components/auth/oauth-form'
-import { LoginForm } from '@/components/auth/login-form'
-import { RegisterForm } from '@/components/auth/register-form';
+import RegisterForm from '@/components/auth/register-form'
+import LoginForm from '@/components/auth/login-form'
+import OauthForm from '@/components/auth/oauth-form'
+import { auth } from '@/auth'
 import { redirect } from 'next/navigation';
-import { CirclePlus, Play, Globe } from 'lucide-react';
+import { CirclePlus, Play, Globe } from 'lucide-react'
 
 // https://next-auth.js.org/configuration/pages#sign-in-page
 const errors = new Map();
@@ -28,7 +28,7 @@ async function PaginaLogin({ searchParams }) {
   if (sesion) redirect('/dashboard')
 
   return (
-    <div className="mt-4 border-2 border-slate-400 rounded-md mx-auto w-fit p-8 flex flex-col gap-2">
+    <div className="mt-4 border-2 border-slate-400 rounded-md mx-auto p-8 flex flex-col gap-2 w-[375px]">
       {/* En Tailwind, la clase peer funciona sólo entre hermanos (siblings) */}
       {/* https://tailwindcss.com/docs/hover-focus-and-other-states#differentiating-peers */}
 

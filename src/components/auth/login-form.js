@@ -1,7 +1,7 @@
 'use client'
-import { useActionState, useEffect } from 'react';
+import { useActionState } from 'react'
 import { login } from '@/lib/actions'
-import { useSearchParams } from 'next/navigation';
+
 
 
 export function LoginForm({ className }) {
@@ -16,7 +16,7 @@ export function LoginForm({ className }) {
                         name='email'
                         defaultValue={state.fields?.email || ''}
                         placeholder="john.doe@example.com"
-                        className='peer block'
+                        className='peer block w-full'
                         required
                     />
                     <p className="invisible peer-invalid:visible text-red-300">
@@ -28,16 +28,18 @@ export function LoginForm({ className }) {
                         name='password'
                         defaultValue={state.fields?.password || ''}
                         placeholder="******"
-                        className='block'
+                        className='block w-full'
                     />
                 </label>
 
-                <button type="submit" disabled={pending} className="px-4 py-2 bg-blue-300 disabled:bg-slate-300">
+                <button type="submit" disabled={pending} className="px-4 py-2 bg-blue-300 disabled:bg-slate-300 disabled:animate-pulse">
                     {pending ? 'Iniciando sessión...' : 'Iniciar sessión'}
                 </button>
 
                 <p className={state?.error ? 'text-red-500' : 'hidden'}> {state.error} </p>
             </div>
         </form>
-    );
-};
+    )
+}
+
+export default LoginForm

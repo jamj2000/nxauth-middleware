@@ -4,13 +4,11 @@ import authConfig from "@/auth.config";
 
 const { auth } = NextAuth(authConfig);
 
+
 export default auth((req) => {
-  // console.log(`MIDDLEWARE AUTH`, req.auth);
   console.log(`MIDDLEWARE`, req.nextUrl.pathname, req.auth);
 
   if (!req.auth) {
-    console.log('No autenticado');
-
     const callbackUrl = req.nextUrl.pathname + req.nextUrl.search
     const encodedCallbackUrl = encodeURIComponent(callbackUrl);
 

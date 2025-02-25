@@ -1,6 +1,6 @@
 import { loginGoogle, loginGithub, loginDiscord } from "@/lib/actions"
 
-export function OauthForm({ className, error }) {
+function OauthForm({ className, error }) {
 
   return (
     <form className={className}>
@@ -8,24 +8,23 @@ export function OauthForm({ className, error }) {
 
       <div className='flex flex-col gap-1'>
         <button formAction={loginGoogle}
-          className="flex gap-4 items-center px-8 py-4 rounded-md bg-slate-200 font-bold hover:bg-white">
+          className="flex gap-6 items-center px-8 py-4 rounded-md bg-slate-200 font-bold hover:bg-white">
           <img src="/images/google.svg" alt="Google" />  Iniciar sesión con Google
         </button>
 
         <button formAction={loginGithub}
-          className="flex gap-4 items-center px-8 py-4 rounded-md bg-slate-200 font-bold hover:bg-white">
+          className="flex gap-6 items-center px-8 py-4 rounded-md bg-slate-200 font-bold hover:bg-white">
           <img src="/images/github.svg" alt="Github" /> Iniciar sesión con Github
         </button>
 
         <button formAction={loginDiscord}
-          className="flex gap-4 items-center px-8 py-4 rounded-md bg-slate-200 font-bold hover:bg-white">
+          className="flex gap-6 items-center px-8 py-4 rounded-md bg-slate-200 font-bold hover:bg-white">
           <img src="/images/discord.svg" alt="Discord" /> Iniciar sesión con Discord
         </button>
         {error}
       </div>
     </form>
-
-
   )
 }
 
+export default OauthForm

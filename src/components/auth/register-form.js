@@ -1,9 +1,9 @@
 'use client'
-import { useActionState } from 'react';
+import { useActionState } from 'react'
 import { register } from '@/lib/actions'
 
 
-export function RegisterForm({ className }) {
+function RegisterForm({ className }) {
 
     const [state, action, pending] = useActionState(register, {})
 
@@ -16,7 +16,7 @@ export function RegisterForm({ className }) {
                         name='name'
                         defaultValue={state.fields?.name || ''}
                         placeholder="John Doe"
-                        className='block'
+                        className='block w-full'
                         required
                     />
                 </label>
@@ -25,7 +25,7 @@ export function RegisterForm({ className }) {
                         name='email'
                         defaultValue={state.fields?.email || ''}
                         placeholder="john.doe@example.com"
-                        className='peer block'
+                        className='peer block w-full'
                     />
                     <p className="invisible peer-invalid:visible text-red-300">
                         Por favor, introduce un email válido.
@@ -36,11 +36,11 @@ export function RegisterForm({ className }) {
                         name='password'
                         defaultValue={state.fields?.password || ''}
                         placeholder="******"
-                        className='block'
+                        className='block w-full'
                     />
                 </label>
 
-                <button type="submit" disabled={pending} className="px-4 py-2 bg-blue-300 disabled:bg-slate-300" >
+                <button type="submit" disabled={pending} className="px-4 py-2 bg-blue-300 disabled:bg-slate-300 disabled:animate-pulse" >
                     {pending ? 'Creando cuenta...' : 'Crear cuenta'}
                 </button>
                 <p className={state?.success ? 'text-green-500' : 'hidden'}> {state.success} </p>
@@ -49,5 +49,7 @@ export function RegisterForm({ className }) {
 
 
         </form>
-    );
-};
+    )
+}
+
+export default RegisterForm
