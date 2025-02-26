@@ -14,8 +14,8 @@ export default auth((req) => {
 
     return Response.redirect(req.nextUrl.origin + `/auth/login?callbackUrl=${encodedCallbackUrl}`)
   }
-
 })
+
 
 export const config = {
   matcher: [

@@ -28,7 +28,7 @@ async function PaginaLogin({ searchParams }) {
   if (sesion) redirect('/dashboard')
 
   return (
-    <div className="mt-4 border-2 border-slate-400 rounded-md mx-auto p-8 flex flex-col gap-2 w-[375px]">
+    <div className="relative mt-8 mx-auto flex flex-col gap-2 w-[375px]">
       {/* En Tailwind, la clase peer funciona sólo entre hermanos (siblings) */}
       {/* https://tailwindcss.com/docs/hover-focus-and-other-states#differentiating-peers */}
 
@@ -40,7 +40,7 @@ async function PaginaLogin({ searchParams }) {
       <label
         htmlFor="signup"
         title="Registro"
-        className='self-end text-slate-300 peer-checked/register:text-black'>
+        className='absolute right-0 text-slate-300 peer-checked/register:text-black'>
         <CirclePlus />
       </label>
 
@@ -53,7 +53,7 @@ async function PaginaLogin({ searchParams }) {
       <label
         htmlFor="signin"
         title="Iniciar sesión"
-        className='self-end text-slate-300 peer-checked/login:text-black'>
+        className='absolute right-10 text-slate-300 peer-checked/login:text-black'>
         <Play />
       </label>
 
@@ -66,15 +66,15 @@ async function PaginaLogin({ searchParams }) {
       <label
         htmlFor="signoauth"
         title="Iniciar sesión con OAuth"
-        className='self-end text-slate-300 peer-checked/oauth:text-black'>
+        className='absolute right-20 text-slate-300 peer-checked/oauth:text-black'>
         <Globe />
       </label>
 
 
-      <RegisterForm className="hidden peer-checked/register:block" />
-      <LoginForm className="hidden peer-checked/login:block" />
-      <OauthForm className="hidden peer-checked/oauth:block" />
-      {error && <p>{errors.get(error)}</p>}
+      <RegisterForm className="hidden peer-checked/register:block w-full bg-[snow] mt-10 border-2 border-slate-400 rounded-md mx-auto p-8 " />
+      <LoginForm className="hidden peer-checked/login:block w-full bg-[snow] mt-10 border-2 border-slate-400 rounded-md mx-auto p-8 " />
+      <OauthForm className="hidden peer-checked/oauth:block w-full bg-[snow] mt-10 border-2 border-slate-400 rounded-md mx-auto p-8 " />
+      {error && <p className='text-red-400'>{errors.get(error)}</p>}
     </div>
   )
 }
