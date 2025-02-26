@@ -104,18 +104,6 @@ export async function loginDiscord() {
 }
 
 
-// LOGIN resend (Magic Link to email)
-export async function loginResend(formData) {
-    try {
-        await signIn("resend", formData)
-    } catch (error) {
-        console.log(error);
-        throw error
-    }
-}
-
-
-
 // LOGOUT
 export async function logout() {
     try {
