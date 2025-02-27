@@ -32,7 +32,7 @@ export function LoginForm({ className }) {
                     />
                 </label>
 
-                <button type="submit" disabled={pending} className="px-4 py-2 bg-blue-300 disabled:bg-slate-300 disabled:animate-pulse">
+                <button type="submit" disabled={pending} className="mt-8 px-8 py-4 bg-slate-900 hover:bg-slate-200 hover:font-bold hover:cursor-pointer text-white hover:text-black disabled:bg-slate-300 disabled:animate-pulse">
                     {pending ? 'Iniciando sessión...' : 'Iniciar sessión'}
                 </button>
 
